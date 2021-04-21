@@ -1,0 +1,43 @@
+.section1{
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-image: url("src/pages/landingPage/bg3.jfif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Lexend', sans-serif;
+}
+#base{
+    background-color: rgba(255, 255, 255, 0.418);
+    border-radius: 4rem;
+    padding: 4rem;
+    backdrop-filter: blur(5px);
+}
+#buttonsbox{
+    background-color: rgb(87, 87, 87);
+    border-radius: 1rem;
+    padding: 4rem;
+    min-height: 15rem;
+    min-width: 15rem;
+    font-size: 3em;
+}
+
+#btncontainer{
+    border-radius: 1rem;
+    padding: 2rem;;
+    background-image: linear-gradient(to right, rgba(88, 38, 226, 0.5), rgba(255, 38, 121, 0.5));
+}
+
+@media (max-width:1000px){
+    #buttonsbox{
+    margin-bottom: 1rem;
+    height: 4rem;
+    width: 4rem;
+    }
+}
+h3{
+    color: rgb(68, 68, 68);
+    font-weight: 700 !important;
+    font-size: 5vw !important;
+}
