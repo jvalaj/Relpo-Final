@@ -36,9 +36,9 @@ function getDistance(
   var a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
     Math.cos(rad(rideLat)) *
-      Math.cos(rad(currLat)) *
-      Math.sin(dLong / 2) *
-      Math.sin(dLong / 2);
+    Math.cos(rad(currLat)) *
+    Math.sin(dLong / 2) *
+    Math.sin(dLong / 2);
   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   var d = (R * c) / 1000;
   return d; // returns the distance in meter
@@ -136,7 +136,7 @@ export default function DashboardPage() {
     setImage(e.target.files[0]);
   }
   return (
-    <div className="section1">
+    <div className="container-fluid min-vh-100 d-flex align-items-center justify-content-center " id='dboardcontainer'>
       <Modal
         centered
         show={yourRidesVisibility}
@@ -290,65 +290,64 @@ export default function DashboardPage() {
           {!selectedRide &&
             hostedRides &&
             hostedRides.filter((ride) => ride.host !== user?.uuid).length ===
-              0 && (
+            0 && (
               <div className="text-center text-danger">NO RIDES NEAR YOU! </div>
             )}
         </Modal.Body>
       </Modal>
-      <div className="container-fluid min-vh-100 p-3" id="base">
-        <div className="row-fluid ">
+
+
+      <div className="container-fluid min-vh-100 d-flex flex-column p-3 ">
+        <div className="row-fluid p-3">
           <div className="col-fluid text-center text-inline">
             <h3 className="display-2">Hi,{user?.name}</h3>
           </div>
-          <br />
-          <div
-            className="row d-flex flex-column min-vh-100 flex-grow-1 align-items-center justify-content-center"
-            id="btncontainer"
-          >
-            <div className="col-fluid">
-              <button
-                type="button"
-                className="btn btn-dark"
-                id="buttonsbox"
-                onClick={() => setHostModalVisibility(true)}
-              >
-                HOST
+        </div>
+        <div className="row-fluid p-3 d-flex flex-grow-1  flex-column align-items-center justify-content-center">
+          <div className="col-fluid">
+            <button
+              type="button"
+              className="btn btn-dark"
+              id="buttonsbox"
+              onClick={() => setHostModalVisibility(true)}
+            >
+              HOST
               </button>
-            </div>
-            <div className="col-fluid">
-              <Button
-                type="button"
-                className="btn btn-dark"
-                id="buttonsbox"
-                onClick={() => setYourRidesVisibility(true)}
-              >
-                YOUR RIDES
+          </div>
+          <div className="col-fluid">
+            <Button
+              type="button"
+              className="btn btn-dark"
+              id="buttonsbox"
+              onClick={() => setYourRidesVisibility(true)}
+            >
+              YOUR RIDES
               </Button>
-            </div>
+          </div>
 
-            <div className="col-fluid">
-              <button
-                onClick={() => setJoinModalVisibility(true)}
-                type="button"
-                className="btn btn-dark"
-                id="buttonsbox"
-              >
-                JOIN
+          <div className="col-fluid">
+            <button
+              onClick={() => setJoinModalVisibility(true)}
+              type="button"
+              className="btn btn-dark"
+              id="buttonsbox"
+            >
+              JOIN
               </button>
-            </div>
-            <div className="col-fluid">
-              <button
-                onClick={signOut}
-                type="button"
-                className="btn btn-dark text-wrap"
-                id="buttonsbox"
-              >
-                SIGN OUT
+          </div>
+          <div className="col-fluid">
+            <button
+              onClick={signOut}
+              type="button"
+              className="btn btn-dark text-wrap"
+              id="buttonsbox"
+            >
+              SIGN OUT
               </button>
-            </div>
           </div>
         </div>
       </div>
     </div>
+
   );
 }
