@@ -295,14 +295,14 @@ export default function DashboardPage() {
             )}
         </Modal.Body>
       </Modal>
-      <div className="container" id="base">
+      <div className="container-fluid min-vh-100 p-3" id="base">
         <div className="row-fluid ">
           <div className="col-fluid text-center text-inline">
             <h3 className="display-2">Hi,{user?.name}</h3>
           </div>
           <br />
           <div
-            className="row d-flex flex-row justify-content-around"
+            className="row d-flex flex-column min-vh-100 flex-grow-1 align-items-center justify-content-center"
             id="btncontainer"
           >
             <div className="col-fluid">
