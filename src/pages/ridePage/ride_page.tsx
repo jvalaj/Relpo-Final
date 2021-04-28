@@ -144,7 +144,12 @@ export default function RidePage() {
                     <p className="card-text">
                       <table className="table">
                         <tbody>
-                         
+                          <tr>
+                            <td>
+                              <strong>Distance</strong>
+                            </td>
+                            <td>{dis.toFixed()}km</td>
+                          </tr>
                           <tr>
                             <td>
                               <strong>Riders</strong>

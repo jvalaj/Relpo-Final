@@ -46,7 +46,12 @@ export default function RideInfo({
             <p className="card-text">
               <table className="table">
                 <tbody>
-                
+                  <tr>
+                    <td>
+                      <strong>Distance</strong>
+                    </td>
+                    <td>{ride.distance.toFixed()}m</td>
+                  </tr>
                   <tr>
                     <td>
                       <strong>Riders</strong>
