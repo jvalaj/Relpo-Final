@@ -25,12 +25,7 @@ export default function RideCard({ ride }: { ride: RideWithDistance }) {
             <p className="card-text">
               <table className="table">
                 <tbody>
-                  <tr>
-                    <td>
-                      <strong>Distance</strong>
-                    </td>
-                    <td>{ride.distance.toFixed()}km</td>
-                  </tr>
+                  
                   <tr>
                     <td>
                       <strong>Riders</strong>
