@@ -2,7 +2,6 @@ import { useUser } from "../../contexts/user_context";
 import "./dashboard_page.css";
 import { Form, Modal, Button } from "react-bootstrap";
 import React, { FormEvent, useEffect, useState } from "react";
-import { usePosition } from "../../components/useLocation/useLocation";
 import plus from "./images/plus.png";
 import {
   addRide,
@@ -20,33 +19,8 @@ import { signOut } from "../../utils/firebase/auth";
 import { useHistory } from "react-router-dom";
 import { uploadButtonImage } from "../../utils/firebase/storage";
 
-function rad(x: number) {
-  return (x * Math.PI) / 180;
-}
-
-function getDistance(
-  rideLat: number,
-  rideLong: number,
-  currLat: number,
-  currLong: number
-) {
-  var R = 6378137; // Earth’s mean radius in meter
-  var dLat = rad(rideLat - currLat);
-  var dLong = rad(rideLong - currLong);
-  var a =
-    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos(rad(rideLat)) *
-    Math.cos(rad(currLat)) *
-    Math.sin(dLong / 2) *
-    Math.sin(dLong / 2);
-  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  var d = (R * c) / 1000;
-  return d; // returns the distance in meter
-}
-
 export default function DashboardPage() {
   const [user] = useUser();
-  const { latitude, longitude } = usePosition();
   const [hostModalVisibility, setHostModalVisibility] = useState(false);
   const [joinModalVisibility, setJoinModalVisibility] = useState(false);
   const [image, setImage] = useState<any>();
@@ -79,8 +53,6 @@ export default function DashboardPage() {
         name: rideName,
         ridersCount,
         city,
-        lat: latitude,
-        long: longitude,
         uuid: tempUID,
         host: user?.uuid,
         participants: [],
@@ -96,32 +68,20 @@ export default function DashboardPage() {
       });
   }
   async function processRides(rides: any) {
-    console.log(latitude);
+    console.log(rides)
     const tempRides: RideWithDistance[] = [];
     for (let ride of rides) {
       const rideUser = await getUserByUID(ride.host);
       tempRides.push({
         ...ride,
-        distance: getDistance(ride.lat, ride.long, latitude, longitude),
         user: rideUser,
       });
     }
-    tempRides.sort((a, b) => a.distance - b.distance);
     return tempRides;
   }
-  useEffect(() => {
-    if (!longitude || !latitude || !hostedRides) return;
-    async function t() {
-      const newrides: any = await processRides(hostedRides);
-      setHostedRides((rides) => newrides);
-    }
-    t();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [latitude, longitude]);
 
   useEffect(() => {
-    if (hostedRides || !longitude || !latitude) return;
+    if (hostedRides) return;
     fire
       .firestore()
       .collection("rides")
@@ -131,7 +91,7 @@ export default function DashboardPage() {
         setHostedRides(await processRides(rides));
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [latitude, longitude]);
+  }, []);
   function onImageChange(e: any) {
     setImage(e.target.files[0]);
   }

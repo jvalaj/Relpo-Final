@@ -27,12 +27,6 @@ export default function RideCard({ ride }: { ride: RideWithDistance }) {
                 <tbody>
                   <tr>
                     <td>
-                      <strong>Distance</strong>
-                    </td>
-                    <td>{ride.distance.toFixed()}km</td>
-                  </tr>
-                  <tr>
-                    <td>
                       <strong>Riders</strong>
                     </td>
                     <td>{ride.ridersCount}</td>

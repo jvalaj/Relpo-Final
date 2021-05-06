@@ -14,9 +14,9 @@ export async function getUserDocument(email:UserInterface['email']) {
     } else return null;
 }
 
-export async function addRide({name,ridersCount,city,lat,long,uuid,host,participants,imageURL}:RideInterface) {
+export async function addRide({name,ridersCount,city,uuid,host,participants,imageURL}:RideInterface) {
     console.log(host)
-    return await fire.firestore().collection('rides').add({name,ridersCount,city,lat,long,uuid,host,participants,imageURL});
+    return await fire.firestore().collection('rides').add({name,ridersCount,city,uuid,host,participants,imageURL});
     
 }
 export async function getUserByUID(uid:string) {
