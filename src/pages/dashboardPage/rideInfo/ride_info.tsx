@@ -31,31 +31,26 @@ export default function RideInfo({
       <div className="row g-0">
         <div className="col-md-12">
           <div className="card-body">
-            <img
-              className="m-2"
-              width={120}
-              height={120}
-              src={
-                ride.imageURL !== ""
-                  ? ride.imageURL
-                  : "https://www.iconbunny.com/icons/media/catalog/product/3/3/332.9-cycle-icon-iconbunny.jpg"
-              }
-              alt="ride"
-            />
+          
             <h5 className="card-title">{ride.name}</h5>
             <p className="card-text">
-              <table className="table">
+            <table className="table">
                 <tbody>
-                  
                   <tr>
                     <td>
-                      <strong>Riders</strong>
+                      <strong>Positions Available</strong>
                     </td>
                     <td>{ride.ridersCount}</td>
                   </tr>
                   <tr>
                     <td>
-                      <strong>City</strong>
+                      <strong>Role Description</strong>
+                    </td>
+                    <td>{ride.desc}</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>Area</strong>
                     </td>
                     <td>{ride.city}</td>
                   </tr>

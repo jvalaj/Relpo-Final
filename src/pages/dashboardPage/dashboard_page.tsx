@@ -30,6 +30,7 @@ export default function DashboardPage() {
   const [rideName, setRideName] = useState("");
   const [ridersCount, setRidersCount] = useState(0);
   const [city, setCity] = useState("");
+  const [desc, setDesc] = useState("");
   const [loading, setLoading] = useState(false);
   const [selectedRide, setSelectedRide] = useState<null | RideWithDistance>(
     null
@@ -53,6 +54,7 @@ export default function DashboardPage() {
         name: rideName,
         ridersCount,
         city,
+        desc,
         uuid: tempUID,
         host: user?.uuid,
         participants: [],
@@ -64,6 +66,7 @@ export default function DashboardPage() {
         setRideName("");
         setRidersCount(0);
         setCity("");
+        setDesc("");
         setLoading(false);
       });
   }
@@ -102,7 +105,7 @@ export default function DashboardPage() {
         show={yourRidesVisibility}
         onHide={() => setYourRidesVisibility(false)}
       >
-        <Modal.Header closeButton>Your Rides</Modal.Header>
+        <Modal.Header closeButton>Your Gigs</Modal.Header>
         <Modal.Body>
           {user &&
             hostedRides &&
@@ -133,7 +136,7 @@ export default function DashboardPage() {
                 ride.participants.includes(user?.uuid)
             ).length === 0 && (
               <div className="text-danger text-center">
-                YOU HAVE NOT HOSTED OR JOINED ANY RIDES YET.
+                YOU HAVE NOT HOSTED OR APPLIED TO ANY GIGS YET.
               </div>
             )}
         </Modal.Body>
@@ -146,7 +149,7 @@ export default function DashboardPage() {
           setJoinModalVisibility(true);
         }}
       >
-        <Modal.Header closeButton>Book {selectedRide?.name}</Modal.Header>
+        <Modal.Header closeButton>Apply to {selectedRide?.name}</Modal.Header>
         <Modal.Body>
           {selectedRide && (
             <RideInfo closeRideInfo={closeRideInfo} ride={selectedRide} />
@@ -158,18 +161,18 @@ export default function DashboardPage() {
         show={hostModalVisibility}
         onHide={() => setHostModalVisibility(false)}
       >
-        <Modal.Header closeButton>Host a ride</Modal.Header>
+        <Modal.Header closeButton>Host a Gig</Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
             <Form.Group>
-              <Form.Label>Ride Name</Form.Label>
+              <Form.Label>Gig Name</Form.Label>
               <Form.Control
                 value={rideName}
                 onChange={(e) => setRideName(e.target.value)}
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label>No. of riders</Form.Label>
+              <Form.Label>Positions Available</Form.Label>
               <Form.Control
                 value={ridersCount}
                 onChange={(e) => {
@@ -180,38 +183,18 @@ export default function DashboardPage() {
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label>City/Area</Form.Label>
+              <Form.Label>Description of story and each role</Form.Label>
+              <Form.Control
+                value={desc}
+                onChange={(e) => setDesc(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>City/Area (Please Enter Complete Address)</Form.Label>
               <Form.Control
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
               />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Add Image (Optional)</Form.Label>
-              <div
-                className="d-flex align-items-center justify-content-center pointer-on-hover"
-                style={{
-                  backgroundColor: "#F4F5F8",
-                  height: 109,
-                  width: 92,
-                }}
-                onClick={() => document.getElementById("choose_pp")?.click()}
-              >
-                <img
-                  alt="plus"
-                  height={image ? 109 : 27}
-                  width={image ? 92 : 27}
-                  src={image ? URL.createObjectURL(image) : plus}
-                />
-                <input
-                  id="choose_pp"
-                  style={{
-                    display: "none",
-                  }}
-                  type="file"
-                  onChange={onImageChange}
-                />
-              </div>
             </Form.Group>
             <Button
               disabled={loading}
@@ -229,7 +212,7 @@ export default function DashboardPage() {
         show={joinModalVisibility}
         onHide={() => setJoinModalVisibility(false)}
       >
-        <Modal.Header closeButton>Join a ride</Modal.Header>
+        <Modal.Header closeButton>Available Gigs</Modal.Header>
         <Modal.Body>
           {!selectedRide &&
             hostedRides &&
@@ -251,7 +234,7 @@ export default function DashboardPage() {
             hostedRides &&
             hostedRides.filter((ride) => ride.host !== user?.uuid).length ===
             0 && (
-              <div className="text-center text-danger">NO RIDES NEAR YOU! </div>
+              <div className="text-center text-danger">NO GIGS NEAR YOU! </div>
             )}
         </Modal.Body>
       </Modal>
@@ -271,7 +254,7 @@ export default function DashboardPage() {
               id="buttonsbox"
               onClick={() => setHostModalVisibility(true)}
             >
-              HOST
+              HOST A GIG
               </button>
           </div>
           <div className="col-fluid">
@@ -281,7 +264,7 @@ export default function DashboardPage() {
               id="buttonsbox"
               onClick={() => setYourRidesVisibility(true)}
             >
-              YOUR RIDES
+              YOUR GIGS
               </Button>
           </div>
 
@@ -292,7 +275,7 @@ export default function DashboardPage() {
               className="btn btn-dark"
               id="buttonsbox"
             >
-              JOIN
+              FIND GIGS 
               </button>
           </div>
           <div className="col-fluid">
@@ -311,3 +294,5 @@ export default function DashboardPage() {
 
   );
 }
+
+

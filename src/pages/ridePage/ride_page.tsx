@@ -89,19 +89,6 @@ export default function RidePage() {
             <div className="card">
               <div className="card-header">{ride.name}</div>
               <div className="row g-0">
-                <div className="col-md-4 d-flex justify-content-center align-items-center">
-                  <img
-                    height={128}
-                    width={128}
-                    src={
-                      ride.imageURL !== ""
-                        ? ride.imageURL
-                        : "https://www.iconbunny.com/icons/media/catalog/product/3/3/332.9-cycle-icon-iconbunny.jpg"
-                    }
-                    alt="..."
-                    className="img-fluid m-3"
-                  />
-                </div>
                 <div
                   className="badge badge-warning"
                   style={{ height: 20 }}
@@ -109,14 +96,14 @@ export default function RidePage() {
                 <div className="col-md-8 ">
                   <div className="card-body">
                     {host && (
-                      <h5 className="card-title">{host?.name}'s Ride</h5>
+                      <h5 className="card-title">{host?.name}'s Gig</h5>
                     )}
                     <p className="card-text">
                       <table className="table">
                         <tbody>
                           <tr>
                             <td>
-                              <strong>Riders</strong>
+                              <strong>Positions Available</strong>
                             </td>
                             <td>{ride.ridersCount}</td>
                           </tr>
@@ -125,6 +112,12 @@ export default function RidePage() {
                               <strong>Area</strong>
                             </td>
                             <td>{ride.city}</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <strong>Story and Role Description</strong>
+                            </td>
+                            <td>{ride.desc}</td>
                           </tr>
                         </tbody>
                       </table>
@@ -147,16 +140,17 @@ export default function RidePage() {
               onClick={deleteRide}
               className="btn btn-outline-danger flex-grow-1 w-100 mb-1 "
             >
-              DELETE RIDE
+              DELETE GIG
             </button>
           )}
         </div>
       </div>
       {participants.length > 0 && (
         <div className="row d-flex align-items-center justify-content-center mt-4">
-          <h2>PARTICIPANTS</h2>
+          <h2>APPLICANTS</h2>
         </div>
       )}
+      
       {participants.map((p) => (
         <div className="row mt-4">
           <div className="col-md-8">
@@ -164,7 +158,7 @@ export default function RidePage() {
               <div className="card-header">{p.name}</div>
               <div className="row g-0">
                 <div className="col-md-4 d-flex justify-content-center align-items-center">
-                  <img src={userimage} alt="..." className="img-fluid" />
+                  <img src={userimage} alt="..." height={80}/>
                 </div>
                 <div
                   className="badge badge-warning"
@@ -172,7 +166,6 @@ export default function RidePage() {
                 ></div>
                 <div className="col-md-8 ">
                   <div className="card-body">
-                    <h5 className="card-title">{p.name}</h5>
                     <p className="card-text">
                       <table className="table">
                         <tbody>

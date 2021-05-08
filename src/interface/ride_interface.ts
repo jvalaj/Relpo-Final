@@ -5,6 +5,7 @@ export default interface RideInterface{
     ridersCount:number;
     city:string;
     uuid:string;
+    desc:string;
     host:string;
     participants:string[];
     imageURL:string;
