@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
 import { useHistory, useParams } from "react-router";
+import BackButton from "../../components/backbtn/back";
 import Loading from "../../components/loading/loading";
 import { useUser } from "../../contexts/user_context";
 import RideInterface from "../../interface/ride_interface";
@@ -77,6 +78,7 @@ export default function RidePage() {
   if (ride === null) return <div>NOT FOUND :(</div>;
   return (
     <div className="container min-vh-100 ">
+      <BackButton/>
       <Modal centered show={showChats} onHide={() => setShowChats(false)}>
         <Modal.Header closeButton>Chat</Modal.Header>
         <Modal.Body>
