@@ -8,7 +8,6 @@ export default interface RideInterface{
     desc:string;
     host:string;
     participants:string[];
-    imageURL:string;
 }
 export interface RideWithDistance extends RideInterface {
     user:UserInterface;

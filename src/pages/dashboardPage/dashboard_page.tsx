@@ -1,7 +1,7 @@
 import { useUser } from "../../contexts/user_context";
 import "./dashboard_page.css";
 import { Form, Modal, Button } from "react-bootstrap";
-import React, { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 
 import {
   addRide,
@@ -17,13 +17,12 @@ import RideCard from "./rideCard/ride_card";
 import RideInfo from "./rideInfo/ride_info";
 import { signOut } from "../../utils/firebase/auth";
 import { useHistory } from "react-router-dom";
-import { uploadButtonImage } from "../../utils/firebase/storage";
+
 
 export default function DashboardPage() {
   const [user] = useUser();
   const [hostModalVisibility, setHostModalVisibility] = useState(false);
   const [joinModalVisibility, setJoinModalVisibility] = useState(false);
-  const [image, setImage] = useState<any>();
   const [hostedRides, setHostedRides] = useState<
     RideWithDistance[] | undefined
   >(undefined);
@@ -41,10 +40,6 @@ export default function DashboardPage() {
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
-    let tempURL = "";
-    if (image) {
-      tempURL = await uploadButtonImage(user, image);
-    }
     if (rideName === "") return;
     if (city === "") return;
     //verification
@@ -58,7 +53,6 @@ export default function DashboardPage() {
         uuid: tempUID,
         host: user?.uuid,
         participants: [],
-        imageURL: tempURL,
       }).then(() => {
         addRideToUser(user, tempUID, true);
         setHostModalVisibility(false);
