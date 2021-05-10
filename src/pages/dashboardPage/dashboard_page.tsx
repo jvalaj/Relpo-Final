@@ -2,7 +2,7 @@ import { useUser } from "../../contexts/user_context";
 import "./dashboard_page.css";
 import { Form, Modal, Button } from "react-bootstrap";
 import React, { FormEvent, useEffect, useState } from "react";
-import plus from "./images/plus.png";
+
 import {
   addRide,
   addRideToUser,
@@ -95,9 +95,6 @@ export default function DashboardPage() {
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  function onImageChange(e: any) {
-    setImage(e.target.files[0]);
-  }
   return (
     <div className="container-fluid min-vh-100 d-flex align-items-center justify-content-center " id='dboardcontainer'>
       <Modal
