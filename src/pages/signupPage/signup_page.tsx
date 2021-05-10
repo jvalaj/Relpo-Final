@@ -1,4 +1,4 @@
-import "./signup_page.css";
+
 import SITE_META from "../../metadata/site_meta";
 import { FormEvent, useState } from "react";
 import { signUpWithEmailAndPassword } from "../../utils/firebase/auth";
@@ -72,9 +72,9 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="section1">
-      <div className="container" id="base">
-        <div className="row-fluid ">
+    <div className="section4">
+      <div className="container-fluid min-vh-100 d-flex align-content-center justify-content-center">
+        <div className="row-fluid align-self-center " id='row2'>
           <div className="col-fluid text-center">
             <h3 className="display-1">{SITE_META.appName}</h3>
           </div>

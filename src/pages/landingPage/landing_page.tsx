@@ -1,13 +1,13 @@
-import "./landing_page.css";
+import './landing_page.css'
 import { useHistory } from "react-router-dom";
 import SITE_META from "../../metadata/site_meta";
 import ROUTES_META from "../../metadata/routes_meta";
 export default function LandingPage() {
   const history = useHistory();
   return (
-    <div className="section1 min-vh-100 w-100 d-flex align-items-center">
-      <div className="container" id="base">
-        <div className="row-fluid text-center">
+    <div className="section3">
+      <div className="container-fluid min-vh-100 d-flex align-content-center justify-content-center">
+        <div className="row-fluid align-self-center text-center" id='row2'>
           <div className="col-fluid">
             <h1 className="display-4">Welcome To </h1>
             <h3 className="display-1">{SITE_META.appName}</h3>
@@ -42,6 +42,7 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    
   );
 }
