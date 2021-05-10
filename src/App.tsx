@@ -10,13 +10,16 @@ import { useUser } from "./contexts/user_context";
 import Loading from "./components/loading/loading";
 import RidePage from "./pages/ridePage/ride_page";
 
+
 function App() {
   const [user] = useUser();
   if (user === undefined) {
     return <Loading />;
   }
   return (
+    
     <HashRouter>
+
       <Switch>
         <Route exact={true} path={"/"}>
           {user ? <Redirect to="/home" /> : <LandingPage />}
