@@ -9,7 +9,7 @@ import ROUTES_META from "./metadata/routes_meta";
 import { useUser } from "./contexts/user_context";
 import Loading from "./components/loading/loading";
 import RidePage from "./pages/ridePage/ride_page";
-
+import Aprogram from "./pages/ambprog/ambprog";
 
 function App() {
   const [user] = useUser();
@@ -35,6 +35,9 @@ function App() {
         </Route>
         <Route path={ROUTES_META.ride}>
           {!user ? <Redirect to="/" /> : <RidePage />}
+        </Route>
+        <Route path={ROUTES_META.aProgram}>
+          {!user ? <Redirect to="/ambassadorprogram" /> : <Aprogram />}
         </Route>
       </Switch>
     </HashRouter>

@@ -237,21 +237,21 @@ export default function DashboardPage() {
             <h3 className="display-2">Hi,{user?.name}</h3>
           </div>
         </div>
-        <div className="row-fluid p-3 d-flex flex-grow-1  flex-column align-items-center justify-content-center">
-          <div className="col-fluid">
+        <div className="row-fluid p-3 d-flex flex-grow-1 flex-column align-items-center justify-content-center">
+          <div className="col-12">
             <button
               type="button"
-              className="btn btn-dark"
+              className="btn py-3 btn-dark"
               id="buttonsbox"
               onClick={() => setHostModalVisibility(true)}
             >
               HOST A GIG
               </button>
           </div>
-          <div className="col-fluid">
+          <div className="col-12">
             <Button
               type="button"
-              className="btn btn-dark"
+              className="btn  py-3 btn-dark"
               id="buttonsbox"
               onClick={() => setYourRidesVisibility(true)}
             >
@@ -259,22 +259,32 @@ export default function DashboardPage() {
               </Button>
           </div>
 
-          <div className="col-fluid">
+          <div className="col-12">
             <button
               onClick={() => setJoinModalVisibility(true)}
               type="button"
-              className="btn btn-dark"
+              className="btn  py-3 btn-fluid btn-dark"
               id="buttonsbox"
             >
               FIND GIGS 
               </button>
           </div>
-          <div className="col-fluid">
+          <div className="col-12">
+            <button
+              onClick={() => history.push('/ambassadorprogram')}
+              type="button"
+              className="btn  btn-light text-wrap"
+              id="buttonsbox2"
+            >
+              APPLY FOR THE AMBASSADOR PROGRAM
+              </button>
+          </div>
+          <div className="col-12">
             <button
               onClick={signOut}
               type="button"
-              className="btn btn-dark text-wrap"
-              id="buttonsbox"
+              className="btn  py-3 btn-danger text-wrap"
+              id="buttonsbox3"
             >
               SIGN OUT
               </button>

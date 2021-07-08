@@ -6,7 +6,7 @@ export default function BackButton(){
     const history=useHistory();
     return(
         <div className="container">
-            <Button variant="light" onClick={() => history.push('/home')}>BACK</Button>
+            <Button variant="light" className='m-2' onClick={() => history.push('/home')}>BACK</Button>
         </div>
     )
 }

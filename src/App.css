@@ -1,3 +1,9 @@
 .pointer-on-hover {
   cursor: pointer;
 }
+p{
+  font-family: 'Lexend', sans-serif;
+}
+*{
+  font-family: 'Lexend', sans-serif;
+}

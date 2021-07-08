@@ -20,13 +20,13 @@ export default function LandingPage() {
                   history.push(ROUTES_META.logIn);
                 }}
                 type="button"
-                className="btn btn-outline-dark"
+                className="btn mb-3 btn-outline-dark"
                 id="loginb"
               >
                 Login
               </button>
             </div>
-            <br />
+
             <div className="col-fluid">
               <button
                 onClick={() => {
