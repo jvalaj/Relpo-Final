@@ -273,7 +273,7 @@ export default function DashboardPage() {
             <button
               onClick={() => history.push('/ambassadorprogram')}
               type="button"
-              className="btn  btn-light text-wrap"
+              className="btn py-3 btn-light text-wrap"
               id="buttonsbox2"
             >
               APPLY FOR THE AMBASSADOR PROGRAM
