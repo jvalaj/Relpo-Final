@@ -11,7 +11,7 @@ export default function Aprogram(){
         </div>
         <div className="row">
             <div className="col">
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdC-D7eAdO9FEid7LwTGG5-N6oDcWYvtLPChiVED3BB8trABA/viewform?embedded=true" width={370} height={1500} frameBorder="0" marginHeight={0} marginWidth={0}>Loading…</iframe>
+            <iframe title='Random Title' src="https://docs.google.com/forms/d/e/1FAIpQLSdC-D7eAdO9FEid7LwTGG5-N6oDcWYvtLPChiVED3BB8trABA/viewform?embedded=true" width={370} height={1500} frameBorder="0" marginHeight={0} marginWidth={0}>Loading…</iframe>
             </div>
         </div>
     </div>
